@@ -1,11 +1,23 @@
 import os
 
-files =(os.listdir())
-listfiles = []
+files = os.listdir()
+list = []
     
     for file in files:
         print(file)
 
+list.append("backup.20141101.tar.gz")
+list.append("backup.20171101.tar.gz")
+list.append("backup.20151101.tar.gz")
+
+list.sort()
+
+for l in list:
+    if l == list[-1]:
+        print ("[keep]", l)
+        
+    else:
+        print ("[remove]", l)
 
 
 

@@ -1,0 +1,29 @@
+﻿The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility. 
+A TELNET connection is a Transmission Control Protocol (TCP) connection used to transmit data with interspersed TELNET control information.
+
+The TELNET Protocol is built upon three main ideas: first, the concept of a "Network Virtual Terminal"; second, the principle of negotiated options; and third, a symmetric view of terminals and processes.
+
+When a Telnet connection is first established, each end is assumed to originate and terminate at a . An NVT is an imaginary device which provides a standard,network-wide, intermediate representation of a canonical terminal. This eliminates the need for "server" and "user" hosts to keep information about the characteristics of each other's terminals and
+terminal handling conventions.
+
+many users will have sophisticated terminals and would like to have elegant, rather than minimal, services. Independent of, but structured within the TELNET Protocol are various "options" that will be sanctioned and may be used with the "DO, DON’T, WILL, WON’T" structure to allow a user and server to agree to use a more elaborate set of conventions for their TELNET connection.
+
+The basic strategy for setting up the use of options is to have either party (or both) initiate a request that some option take effect. The other party may then either accept or reject the request. If the request is accepted the option immediately takes effect; if it is rejected the associated aspect of the connection remains as specified for an NVT. Option requests are likely to flurry back and forth when a TELNET connection is first established, as each party attempts to get the best possible service from the other party.
+
+As much as possible, the TELNET protocol has been made server-user symmetrical so that it easily and naturally covers the user-user (linking) and server-server (cooperating processes) cases. It is hoped, but not absolutely required, that options will further this intent. In any case, it is explicitly acknowledged that symmetry is an operating principle rather than an ironclad rule
+
+
+2. On page 2, in paragraph 2 the principle of negotiated options is explained. It states: "The syntax of option negotiation has been set up so that if both parties request an option simultaneously, each will see the other’s request as the positive acknowledgment of its own." Say the server and the client both request the ECHO option at the same time. Explain this situation using the above quote.
+When the server and the client both request the ECHO option at the same time. The server and the client won’t send an acknowledge package to each other. Because they both take the request from each other as an acknowledge. 
+
+3. On page 2 in paragraph 3 it is explained how the symmetry of the negotiation syntax can potentially lead to nonterminating loops. Provide two different examples using the ECHO option.
+- It is possible for requests initiated by processes to stimulate a nonterminating request loop if the process responds to a rejection by merely re-requesting the option.
+- when both parties request an option simultaneously and each party seeing incoming the incoming commands not as acknowledgments but as new requests which must be acknowledged.
+
+4. Does a non virtual NVT printer have to show a Carriage Return (CR) if that character is present without a following Line Feed (LF) or NULL character?
+No, terminals do not have a CR independent of the LF and NUL, but on such terminals it may be possible to simulate a CR by backspacing.)
+
+5. There are two different protocols from different network layers involved in the TELNET "Synch" signal. What other protocol is involved and why is it necessary?
+TCP, This is necessary for the urgent flag. So the package get priority.
+
+
